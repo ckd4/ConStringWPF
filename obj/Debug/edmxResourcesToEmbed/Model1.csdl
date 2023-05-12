@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PrepodModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Нагрузка">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id_преподавателя" Type="Int32" Nullable="false" />
+    <Property Name="id_предмета" Type="Int32" Nullable="false" />
+    <Property Name="Количество_часов" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Преподаватели" Relationship="Self.FK__Нагрузка__id_пре__286302EC" FromRole="Нагрузка" ToRole="Преподаватели" />
+    <NavigationProperty Name="Предметы" Relationship="Self.FK__Нагрузка__id_пре__29572725" FromRole="Нагрузка" ToRole="Предметы" />
+  </EntityType>
+  <EntityType Name="Предметы">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Нагрузка" Relationship="Self.FK__Нагрузка__id_пре__29572725" FromRole="Предметы" ToRole="Нагрузка" />
+  </EntityType>
+  <EntityType Name="Преподаватели">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="ФИО" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Штатный_статус" Type="Boolean" Nullable="false" />
+    <Property Name="Количество_часов" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Нагрузка" Relationship="Self.FK__Нагрузка__id_пре__286302EC" FromRole="Преподаватели" ToRole="Нагрузка" />
+  </EntityType>
+  <Association Name="FK__Нагрузка__id_пре__286302EC">
+    <End Role="Преподаватели" Type="Self.Преподаватели" Multiplicity="1" />
+    <End Role="Нагрузка" Type="Self.Нагрузка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Преподаватели">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Нагрузка">
+        <PropertyRef Name="id_преподавателя" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Нагрузка__id_пре__29572725">
+    <End Role="Предметы" Type="Self.Предметы" Multiplicity="1" />
+    <End Role="Нагрузка" Type="Self.Нагрузка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Предметы">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Нагрузка">
+        <PropertyRef Name="id_предмета" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PrepodEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Нагрузка" EntityType="Self.Нагрузка" />
+    <EntitySet Name="Предметы" EntityType="Self.Предметы" />
+    <EntitySet Name="Преподаватели" EntityType="Self.Преподаватели" />
+    <AssociationSet Name="FK__Нагрузка__id_пре__286302EC" Association="Self.FK__Нагрузка__id_пре__286302EC">
+      <End Role="Преподаватели" EntitySet="Преподаватели" />
+      <End Role="Нагрузка" EntitySet="Нагрузка" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Нагрузка__id_пре__29572725" Association="Self.FK__Нагрузка__id_пре__29572725">
+      <End Role="Предметы" EntitySet="Предметы" />
+      <End Role="Нагрузка" EntitySet="Нагрузка" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

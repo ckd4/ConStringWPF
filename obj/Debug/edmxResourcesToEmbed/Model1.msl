@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище PrepodModelContainer" CdmEntityContainer="PrepodEntities">
+    <EntitySetMapping Name="Нагрузка">
+      <EntityTypeMapping TypeName="PrepodModel.Нагрузка">
+        <MappingFragment StoreEntitySet="Нагрузка">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_преподавателя" ColumnName="id_преподавателя" />
+          <ScalarProperty Name="id_предмета" ColumnName="id_предмета" />
+          <ScalarProperty Name="Количество_часов" ColumnName="Количество_часов" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Предметы">
+      <EntityTypeMapping TypeName="PrepodModel.Предметы">
+        <MappingFragment StoreEntitySet="Предметы">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Преподаватели">
+      <EntityTypeMapping TypeName="PrepodModel.Преподаватели">
+        <MappingFragment StoreEntitySet="Преподаватели">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+          <ScalarProperty Name="Штатный_статус" ColumnName="Штатный_статус" />
+          <ScalarProperty Name="Количество_часов" ColumnName="Количество_часов" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
